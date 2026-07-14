@@ -28,5 +28,5 @@ RUN mkdir -p /app/uploads
 # Expose the API port
 EXPOSE 8000
 
-# Start the FastAPI server
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Start the FastAPI server (running the seed script first to ensure database tables and admin are set up)
+CMD python seed_admin.py && uvicorn app.main:app --host 0.0.0.0 --port 8000
