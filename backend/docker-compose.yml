@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  # ── PostgreSQL with pgvector extension ──
+  db:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: faceapp
+      POSTGRES_PASSWORD: faceapp123
+      POSTGRES_DB: facerecognition
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U faceapp -d facerecognition"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ── FastAPI Backend ──
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+      - uploads:/app/uploads
+
+volumes:
+  postgres_data:
+  uploads:
