@@ -240,6 +240,9 @@ async def get_access_stats(
     Return aggregate access statistics for the admin dashboard:
     total attempts, granted/denied counts, percentage, and last 10 attempts.
     """
+    # ── Calculate start of today in UTC ──
+    today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+
     # ── Counts ──
     users_result = await db.execute(select(func.count(User.id)).where(User.role != "admin"))
     total_users = users_result.scalar() or 0
@@ -247,13 +250,22 @@ async def get_access_stats(
     total_result = await db.execute(select(func.count(AccessLog.id)))
     total = total_result.scalar() or 0
 
-    granted_result = await db.execute(
-        select(func.count(AccessLog.id)).where(AccessLog.result == "granted")
+    # Today's attempts
+    today_attempts_result = await db.execute(
+        select(func.count(AccessLog.id)).where(AccessLog.timestamp >= today_start)
     )
-    granted = granted_result.scalar() or 0
+    today_attempts = today_attempts_result.scalar() or 0
 
-    denied = total - granted
-    granted_pct = round((granted / total) * 100, 2) if total > 0 else 0.0
+    # Today's granted
+    today_granted_result = await db.execute(
+        select(func.count(AccessLog.id))
+        .where(AccessLog.timestamp >= today_start)
+        .where(AccessLog.result == "granted")
+    )
+    today_granted = today_granted_result.scalar() or 0
+
+    today_denied = today_attempts - today_granted
+    granted_pct = round((today_granted / today_attempts) * 100, 2) if today_attempts > 0 else 0.0
 
     # ── Recent attempts ──
     recent_query = (
@@ -281,8 +293,9 @@ async def get_access_stats(
     return AccessStatsResponse(
         total_users=total_users,
         total_attempts=total,
-        granted_count=granted,
-        denied_count=denied,
+        today_attempts=today_attempts,
+        granted_count=today_granted,
+        denied_count=today_denied,
         granted_percentage=granted_pct,
         recent_attempts=recent_items,
     )

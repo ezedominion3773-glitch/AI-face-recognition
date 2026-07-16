@@ -74,6 +74,7 @@ class AccessStatsResponse(BaseModel):
     """Aggregate statistics for the admin dashboard."""
     total_users: int
     total_attempts: int
+    today_attempts: int
     granted_count: int
     denied_count: int
     granted_percentage: float
