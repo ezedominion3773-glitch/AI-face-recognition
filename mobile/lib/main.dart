@@ -31,8 +31,8 @@ class FaceAccessApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LogsProvider()),
       ],
       child: MaterialApp(
-        title: 'FaceGuard Access Control',
-        theme: AppTheme.darkTheme,
+        title: 'AI Face Recognition',
+        theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         initialRoute: AppRoutes.splash,
         routes: {

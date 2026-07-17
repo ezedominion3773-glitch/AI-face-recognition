@@ -175,7 +175,7 @@ class _AdminEnrollScreenState extends State<AdminEnrollScreen> {
                     color: theme.colorScheme.surface,
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: _imageFile == null ? Colors.white10 : theme.colorScheme.secondary,
+                      color: _imageFile == null ? (theme.dividerTheme.color ?? const Color(0xFFE2E8F0)) : theme.colorScheme.secondary,
                       width: 2,
                     ),
                     image: _imageBytes != null
@@ -195,17 +195,17 @@ class _AdminEnrollScreenState extends State<AdminEnrollScreen> {
                               color: theme.colorScheme.secondary,
                             ),
                             const SizedBox(height: 12),
-                            const Text(
+                            Text(
                               "Tap to Capture Face Photo",
                               style: TextStyle(
-                                color: Colors.white70,
+                                color: theme.textTheme.bodyMedium?.color?.withOpacity(0.7),
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             const SizedBox(height: 4),
-                            const Text(
+                            Text(
                               "Front facing, neutral expression, well-lit",
-                              style: TextStyle(color: Colors.white30, fontSize: 11),
+                              style: TextStyle(color: theme.hintColor, fontSize: 11),
                             ),
                           ],
                         )

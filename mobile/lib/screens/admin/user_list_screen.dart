@@ -120,7 +120,7 @@ class _AdminUserListScreenState extends State<AdminUserListScreen> {
                   ? Center(
                       child: Text(
                         _searchQuery.isNotEmpty ? "No matching users found." : "No users enrolled yet.",
-                        style: const TextStyle(color: Colors.white30),
+                        style: TextStyle(color: theme.hintColor),
                       ),
                     )
                   : ListView.builder(
@@ -153,17 +153,17 @@ class _AdminUserListScreenState extends State<AdminUserListScreen> {
                             ),
                             title: Text(
                               user.fullName,
-                              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                              style: TextStyle(fontWeight: FontWeight.bold, color: theme.textTheme.bodyLarge?.color),
                             ),
                             subtitle: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const SizedBox(height: 2),
                                 if (user.email != null && user.email!.isNotEmpty)
-                                  Text(user.email!, style: const TextStyle(fontSize: 12, color: Colors.white60)),
+                                  Text(user.email!, style: TextStyle(fontSize: 12, color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6))),
                                 if (user.staffId != null && user.staffId!.isNotEmpty) ...[
                                   const SizedBox(height: 2),
-                                  Text("ID: ${user.staffId!}", style: const TextStyle(fontSize: 11, color: Colors.white38)),
+                                  Text("ID: ${user.staffId!}", style: TextStyle(fontSize: 11, color: theme.textTheme.bodySmall?.color?.withOpacity(0.6))),
                                 ],
                               ],
                             ),

@@ -31,11 +31,10 @@ class AuthProvider extends ChangeNotifier {
         final users = await _apiService.getUsers(page: 1, limit: 1);
         _isAuthenticated = true;
         // Construct a dummy or search for ourselves, or we can just assume user is logged in
-        // In this case, we'll store basic state
         _currentUser = User(
           id: '0',
           fullName: 'Administrator',
-          email: 'admin@system.com',
+          email: 'ugwuikenna299@gmail.com',
           staffId: 'ADMIN',
           role: 'admin',
           createdAt: DateTime.now(),

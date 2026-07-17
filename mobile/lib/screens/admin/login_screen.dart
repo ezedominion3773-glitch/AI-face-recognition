@@ -78,12 +78,12 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
                       ),
                       const SizedBox(height: 24),
 
-                      const Text(
+                      Text(
                         "Admin Portal",
                         style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: theme.textTheme.headlineMedium?.color,
                           letterSpacing: 1.5,
                         ),
                       ),
@@ -92,7 +92,7 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
                         "Sign in to manage face entries & logs",
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.white.withOpacity(0.6),
+                          color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
                         ),
                       ),
                       const SizedBox(height: 40),
@@ -101,9 +101,9 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
                       Container(
                         padding: const EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: theme.colorScheme.surface.withOpacity(0.8),
+                          color: theme.colorScheme.surface,
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.white10),
+                          border: Border.all(color: theme.dividerTheme.color ?? const Color(0xFFE2E8F0)),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black26,
@@ -147,7 +147,7 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
                                   suffixIcon: IconButton(
                                     icon: Icon(
                                       _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                                      color: Colors.white60,
+                                      color: theme.iconTheme.color?.withOpacity(0.6),
                                     ),
                                     onPressed: () {
                                       setState(() {

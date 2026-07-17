@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 class ApiConfig {
   // Use secure locked subdomain localtunnel URL for Web, and direct local Wi-Fi for physical mobile apps
-  static final String baseUrl = 'https://exhibitions-log-prize-gnu.trycloudflare.com';
+  static final String baseUrl = 'https://ai-face-recognition-2.onrender.com';
 
   static const String login = '/auth/login';
   static const String enroll = '/users/enroll';

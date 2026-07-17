@@ -23,8 +23,8 @@ class Settings(BaseSettings):
     MATCH_THRESHOLD: float = 0.6
 
     UPLOAD_DIR: str = "./uploads"
-    ADMIN_EMAIL: str = "admin@system.com"
-    ADMIN_PASSWORD: str = "admin123"
+    ADMIN_EMAIL: str = "ugwuikenna299@gmail.com"
+    ADMIN_PASSWORD: str = "Admin321"
 
     model_config = {
         "env_file": ".env",

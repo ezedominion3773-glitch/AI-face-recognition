@@ -222,7 +222,7 @@ class _ScanScreenState extends State<ScanScreen> with SingleTickerProviderStateM
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "FaceGuard Portal",
+                      "AI Face Recognition",
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,

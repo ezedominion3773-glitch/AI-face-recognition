@@ -44,8 +44,8 @@ docker-compose exec backend python seed_admin.py
 ```
 
 *Default Credentials:*
-- **Email**: `admin@system.com`
-- **Password**: `admin123`
+- **Email**: `ugwuikenna299@gmail.com`
+- **Password**: `Admin321`
 
 ---
 
@@ -87,7 +87,7 @@ Perform these steps to confirm the system is fully operational:
 
 ### 1. Administrator Enrollment Test
 1. Open the mobile app and navigate to **Settings** (top right) to view the Admin Login.
-2. Log in with `admin@system.com` and `admin123`.
+2. Log in with `ugwuikenna299@gmail.com` and `Admin321`.
 3. Tap **Enroll User** on the dashboard.
 4. Input a test name (e.g., `John Doe`), optional email/ID, and tap to capture their biometric photo.
 5. Tap **Enroll Member**.

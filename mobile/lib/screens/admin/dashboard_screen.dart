@@ -71,10 +71,10 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
               // Welcome Text
               Text(
                 "Welcome, ${authProvider.currentUser?.fullName ?? 'Administrator'}",
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: theme.textTheme.headlineMedium?.color,
                 ),
               ),
               const SizedBox(height: 4),
@@ -82,7 +82,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                 "Biometric terminal management console",
                 style: TextStyle(
                   fontSize: 13,
-                  color: Colors.white.withOpacity(0.6),
+                  color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
                 ),
               ),
               const SizedBox(height: 24),
@@ -129,12 +129,12 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
               const SizedBox(height: 28),
 
               // Quick Actions
-              const Text(
+              Text(
                 "Quick Management Actions",
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white70,
+                  color: theme.textTheme.titleMedium?.color,
                 ),
               ),
               const SizedBox(height: 12),
@@ -174,12 +174,12 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     "Recent Access Activity",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white70,
+                      color: theme.textTheme.titleMedium?.color,
                     ),
                   ),
                   TextButton(
@@ -198,10 +198,10 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                   decoration: BoxDecoration(
                     color: theme.colorScheme.surface,
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: Colors.white10),
+                    border: Border.all(color: theme.dividerTheme.color ?? const Color(0xFFE2E8F0)),
                   ),
-                  child: const Center(
-                    child: Text("No access attempts recorded yet.", style: TextStyle(color: Colors.white30)),
+                  child: Center(
+                    child: Text("No access attempts recorded yet.", style: TextStyle(color: theme.hintColor)),
                   ),
                 )
               else
@@ -221,7 +221,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                       decoration: BoxDecoration(
                         color: theme.colorScheme.surface,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.white10),
+                        border: Border.all(color: theme.dividerTheme.color ?? const Color(0xFFE2E8F0)),
                       ),
                       child: Row(
                         children: [
@@ -237,12 +237,12 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                               children: [
                                 Text(
                                   log['user_name'] ?? 'Unknown Person',
-                                  style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
+                                  style: TextStyle(fontWeight: FontWeight.w600, color: theme.textTheme.bodyLarge?.color),
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
                                   log['reason'] ?? '',
-                                  style: const TextStyle(fontSize: 12, color: Colors.white38),
+                                  style: TextStyle(fontSize: 12, color: theme.textTheme.bodySmall?.color?.withOpacity(0.6)),
                                 ),
                               ],
                             ),
@@ -252,7 +252,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                             children: [
                               Text(
                                 timeStr,
-                                style: const TextStyle(fontSize: 11, color: Colors.white38),
+                                style: TextStyle(fontSize: 11, color: theme.textTheme.bodySmall?.color?.withOpacity(0.6)),
                               ),
                               if (log['confidence_score'] != null) ...[
                                 const SizedBox(height: 2),
@@ -292,7 +292,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white10),
+        border: Border.all(color: theme.dividerTheme.color ?? const Color(0xFFE2E8F0)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -314,10 +314,10 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
             children: [
               Text(
                 value,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: theme.textTheme.displayMedium?.color,
                 ),
               ),
               const SizedBox(height: 2),
@@ -325,7 +325,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                 title,
                 style: TextStyle(
                   fontSize: 11,
-                  color: Colors.white.withOpacity(0.5),
+                  color: theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
                 ),
               ),
             ],
@@ -349,7 +349,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
         decoration: BoxDecoration(
           color: theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.white10),
+          border: Border.all(color: theme.dividerTheme.color ?? const Color(0xFFE2E8F0)),
         ),
         child: Column(
           children: [
@@ -357,10 +357,10 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
             const SizedBox(height: 8),
             Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
-                color: Colors.white,
+                color: theme.textTheme.bodyLarge?.color,
               ),
             ),
           ],

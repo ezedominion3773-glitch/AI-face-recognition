@@ -77,8 +77,8 @@ class _AdminLogsScreenState extends State<AdminLogsScreen> {
             child: RefreshIndicator(
               onRefresh: () => _fetchLogs(refresh: true),
               child: logsProvider.logs.isEmpty && !logsProvider.isLoading
-                  ? const Center(
-                      child: Text("No access logs found.", style: TextStyle(color: Colors.white30)),
+                  ? Center(
+                      child: Text("No access logs found.", style: TextStyle(color: theme.hintColor)),
                     )
                   : ListView.builder(
                       controller: _scrollController,
@@ -112,7 +112,7 @@ class _AdminLogsScreenState extends State<AdminLogsScreen> {
                             ),
                             title: Text(
                               log.userName ?? 'Unknown Person',
-                              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                              style: TextStyle(fontWeight: FontWeight.bold, color: theme.textTheme.bodyLarge?.color),
                             ),
                             subtitle: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,12 +120,12 @@ class _AdminLogsScreenState extends State<AdminLogsScreen> {
                                 const SizedBox(height: 2),
                                 Text(
                                   "Reason: ${log.reason} (${isGranted ? 'Match' : 'No Match'})",
-                                  style: const TextStyle(fontSize: 12, color: Colors.white70),
+                                  style: TextStyle(fontSize: 12, color: theme.textTheme.bodyMedium?.color?.withOpacity(0.7)),
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
                                   formattedTime,
-                                  style: const TextStyle(fontSize: 11, color: Colors.white38),
+                                  style: TextStyle(fontSize: 11, color: theme.textTheme.bodySmall?.color?.withOpacity(0.6)),
                                 ),
                               ],
                             ),
@@ -133,9 +133,9 @@ class _AdminLogsScreenState extends State<AdminLogsScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                const Text(
+                                Text(
                                   "Confidence",
-                                  style: TextStyle(fontSize: 10, color: Colors.white38),
+                                  style: TextStyle(fontSize: 10, color: theme.textTheme.bodySmall?.color?.withOpacity(0.6)),
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
@@ -173,7 +173,7 @@ class _AdminLogsScreenState extends State<AdminLogsScreen> {
       selectedColor: theme.colorScheme.primary,
       backgroundColor: theme.colorScheme.surface,
       labelStyle: TextStyle(
-        color: isSelected ? Colors.white : Colors.white60,
+        color: isSelected ? Colors.white : theme.textTheme.bodyMedium?.color?.withOpacity(0.6),
         fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
       ),
     );
